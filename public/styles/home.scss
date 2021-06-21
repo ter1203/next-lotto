@@ -1,19 +1,44 @@
+@import "variables";
+
+.text-primary {
+    color: $color-primary;
+    text-transform: none;
+}
+.text-secondary {
+    color: $color-secondary;
+    text-transform: none;
+}
+
+.lotto_banner .slogan_block {
+    font-size: 3.5rem;
+    color: #fff;
+    font-family: Gilroy-bold;
+    text-align: center;
+}
+
+.lotto_banner .slogan_block .slogan_2 {
+    font-size: 3.5rem;
+    color: #fff;
+    font-family: Gilroy-bold;
+    text-align: center;
+}
+
 .view-all-lotts {
     margin: 0px 130px 40px 0;
     font-family: Gilroy-Regular;
     font-size: 20px;
     line-height: 23px;
-    color: #FFFFFF;
-    transition: .3s;
+    color: $color-white;
+    transition: 0.3s;
 
     &:hover {
-        color: #13d19c;
-        transition: .3s;
+        color: $color-primary;
+        transition: 0.3s;
     }
 }
-    
+
 #owl-demo .slide {
-    border: 1px solid rgba(19, 209, 156, 0.2);
+    border: 1px solid $color-border;
     box-sizing: border-box;
     border-radius: 10px;
 
@@ -32,17 +57,17 @@
         font-family: Gilroy-Bold;
         font-size: 18px;
         white-space: nowrap;
-        color: #FFFFFF;
+        color: $color-white;
         padding: 10px;
-        background: #13D19C;
+        background: $color-primary;
         border-radius: 5px;
-        transition: .3s;
+        transition: 0.3s;
         margin-right: 10px;
         text-align: center;
         min-width: 12rem;
     }
 
-    & .jackpot{
+    & .jackpot {
         text-align: center;
         margin: 0 auto;
 
@@ -52,11 +77,11 @@
             font-size: 18px;
             line-height: 21px;
             text-align: center;
-            color: #FFFFFF;
+            color: $color-white;
             min-height: 60px;
 
             & span {
-                color: #13D19C;
+                color: $color-primary;
             }
         }
 
@@ -66,19 +91,19 @@
         }
 
         & a.playNowBtn.hover {
-            background: #13d19cc9;
-            transition: .3s;
+            background: $color-primary;
+            transition: 0.3s;
         }
 
         & .jackpotAmount {
             font-family: Gilroy-bold;
             font-size: 3.5rem;
-            color: #13D19C;
+            color: $color-secondary;
         }
     }
 }
-    
-.countdown{
+
+.countdown {
     display: flex;
     justify-content: center;
     min-width: 12em;
@@ -93,18 +118,18 @@
             font-family: Gilroy-Bold;
             font-size: 28px;
             text-align: center;
-            color: #FFFFFF;
+            color: $color-white;
             text-align: center;
             align-self: center;
             align-items: center;
         }
 
-        & span{
+        & span {
             display: block;
             font-family: Gilroy-medium;
             font-size: 16px;
             line-height: 19px;
-            color: #FFFFFF;
+            color: $color-white;
             padding: 10px;
         }
     }
@@ -113,7 +138,7 @@
         font-family: Gilroy-Bold;
         font-size: 28px;
         line-height: 33px;
-        color: #FFFFFF;
+        color: $color-white;
         text-align: center;
         border-radius: 4px;
     }
@@ -124,7 +149,7 @@
 
     & h1 {
         font-size: 30px;
-        color: #fff;
+        color: $color-white;
         line-height: 40px;
     }
 
@@ -136,7 +161,7 @@
     & .track {
         display: flex;
         flex: 1;
-        border: 1px solid rgba(19, 209, 156, 0.2);
+        border: 1px solid $color-border;
         box-sizing: border-box;
         border-radius: 10px;
         margin-right: 20px;
@@ -149,12 +174,12 @@
 
     & .jackpotAmount {
         font-size: 30px;
-        color: #13D19C;
+        color: $color-secondary;
     }
 
     & .jackpotDesciption {
         font-size: 24px;
-        color: #fff;
+        color: $color-white;
         margin-bottom: 20px;
     }
 
@@ -168,21 +193,21 @@
 
     & a.playNowBtn {
         font-size: 20px;
-        color: #FFFFFF;
+        color: $color-white;
         padding: 10px 40px;
-        background: #13D19C;
+        background: $color-primary;
         border-radius: 5px;
-        transition: .3s;
+        transition: 0.3s;
         line-height: 50px;
 
-        &.expiredDate{
+        &.expiredDate {
             opacity: 0;
             visibility: hidden;
         }
 
-        &:hover{
-            background: #13d19cc9;
-            transition: .3s;
+        &:hover {
+            background: $color-primary-hover;
+            transition: 0.3s;
         }
     }
 
@@ -192,7 +217,7 @@
         padding: 20px 0;
         justify-content: left;
 
-        & .itemCt{
+        & .itemCt {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -200,18 +225,18 @@
             & .itemBg {
                 font-size: 20px;
                 text-align: center;
-                color: #FFFFFF;
+                color: $color-white;
                 text-align: center;
                 align-self: center;
                 align-items: center;
             }
 
-            & span{
+            & span {
                 display: block;
                 font-family: Gilroy-medium;
                 font-size: 16px;
                 line-height: 19px;
-                color: #FFFFFF;
+                color: $color-white;
                 padding: 10px;
             }
         }
@@ -221,16 +246,16 @@
         & .lottery-container {
             flex-direction: column;
         }
-        
+
         & .track {
             margin-bottom: 25px;
             margin-right: 0;
         }
-        
+
         & .lotteryImg {
             margin-bottom: 40px;
         }
-        
+
         & .flexRow {
             flex: none;
         }
@@ -262,36 +287,81 @@
 #middle_home {
     margin-top: 40px;
 
-	& .playgroup-result {
+    & .playgroup-result {
         display: flex;
+        justify-content: space-between;
         margin-bottom: 40px;
-
-        & > div > h1 {
-            font-size: 30px;
-            color: #fff;
-            line-height: 40px;
-            margin-bottom: 40px;
-        }
+        width: 100%;
+        float: left;
+        height: 550px;
+        font-family: Gilroy-medium;
+        height: auto;
 
         & > div {
-            height: 555px;
+            height: 570px;
+            width: 48%;
+
+            &:first-child {
+                height: 570px;
+
+                & .home-banner-new {
+                    background: url("/images/playingroup.png") no-repeat 100% 100%;
+                    background-position: 0px 0px;
+                    height: 490px;
+                    position: relative;
+
+                    & h2 {
+                        position: absolute;
+                        left: 30px;
+                        color: $color-white;
+                        line-height: 1.5;
+                        font-size: 30px;
+                        font-family: Gilroy-bold;
+                        top: 240px;
+                    }
+
+                    & a {
+                        position: absolute;
+                        font-size: 30px;
+                        font-family: Gilroy-bold;
+                        left: 30px;
+                        top: 400px;
+                        color: $color-white;
+                        background-color: $color-primary;
+                        min-width: 180px;
+                        padding: 12px;
+                        text-align: center;
+                        border-radius: 4px;
+
+                        &:hover {
+                            background-color: $color-primary-hover;
+                        }
+                    }
+                }
+            }
+
+            & > h1 {
+                font-size: 30px;
+                color: $color-white;
+                line-height: 40px;
+                margin-bottom: 40px;
+            }
         }
     }
 }
-    
-    
+
 .lotteryresultslist-new li.block .datenum {
     display: none;
 }
 
 .vert .simply-scroll-clip {
-    border-bottom: 0px solid rgb(219,224,238);
+    border-bottom: 0px solid rgb(219, 224, 238);
 }
 
 .lotteryresultslist-new li.block {
     text-align: left;
-    background: linear-gradient(180deg, #111724 0%, #090E18 100%);
-    box-shadow: 0px 2px 4px #000000, inset 0px 0.51px 0px rgba(255, 255, 255, 0.3);
+    background: linear-gradient(180deg, $color-background 0%, $color-darkbg 100%);
+    box-shadow: 0px 2px 4px $color-black, inset 0px 0.51px 0px $color-lightgray;
     border-radius: 3px;
     list-style-type: none;
     width: auto;
@@ -306,7 +376,7 @@
         align-items: center;
         justify-content: space-between;
 
-        & .lotto-title-block{
+        & .lotto-title-block {
             display: flex;
             align-items: center;
 
@@ -322,8 +392,9 @@
         font-family: Gilroy-Bold;
         font-size: 24px;
         line-height: 33px;
-        color: #FFFFFF;
-        text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(255, 255, 255, 0.12), 0px 4px 8px rgba(255, 255, 255, 0.18);
+        color: $color-white;
+        text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(255, 255, 255, 0.12),
+            0px 4px 8px rgba(255, 255, 255, 0.18);
         align-self: center;
     }
 
@@ -331,83 +402,123 @@
         font-family: Gilroy-bold;
         font-size: 22px;
         line-height: 26px;
-        color: #FFFFFF;
+        color: $color-white;
         padding: 16px 30px;
-        background: #13D19C;
+        background: $color-primary;
         box-shadow: 0px 10px 16px rgba(19, 209, 156, 0.16), 0px 4px 6px rgba(0, 0, 0, 0.06);
         border-radius: 10px;
-        margin-left: auto!important;
-        transition: .3s;
+        margin-left: auto !important;
+        transition: 0.3s;
 
         &:hover {
-            background: #13d19cc9;
-            transition: .3s;
+            background: $color-primary;
+            transition: 0.3s;
         }
     }
 }
 
-
 .lotteryresultslist-new .simply-scroll-clip {
-    height: 380px;
+    height: 400px;
 }
-    
+
 .lotto-results-section .more-result-link {
-    background: #13D19C;
+    background: $color-primary;
     box-shadow: 0px 10px 16px rgba(19, 209, 156, 0.16), 0px 4px 6px rgba(0, 0, 0, 0.06);
     border-radius: 5px;
     font-family: Gilroy-bold;
-    font-size: 22px!important;
-    line-height: 26px!important;
-    color: #FFFFFF!important;
-    padding: 16px 0px!important;
-    width: 100%!important;
-    border: 0!important;
+    font-size: 22px !important;
+    line-height: 26px !important;
+    color: $color-white !important;
+    padding: 16px 0px !important;
+    width: 100% !important;
+    border: 0 !important;
     text-align: center;
-    margin-top: 35px!important;
+    margin-top: 30px !important;
     display: block;
-    transition: .3s;
+    transition: 0.3s;
 
     &:hover {
-        background: #13d19cc9;
-        transition: .3s;
+        background: $color-primary;
+        transition: 0.3s;
     }
 }
 
 @media screen and (max-width: 1100px) {
-	#main .exclusive-lotteries {
-		max-width: 480px;
-		margin: auto;
+    #main .exclusive-lotteries {
+        max-width: 520px;
+        margin: auto;
 
-		& .lottery-container {
-			display: flex;
-			align-items: center;
-			flex-direction: column;
+        & .lottery-container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
 
-			& > div {
-				max-width: 520px;
-				margin-bottom: 40px;
-			}
-		}
-	}
+            & > div {
+                max-width: 520px;
+                margin-bottom: 40px;
+            }
+        }
+    }
 
-	#middle_home {
-		& .playgroup-result {
-			display: flex;
-			align-items: center;
+    #middle_home {
+        & .playgroup-result {
+            display: flex;
+            align-items: center;
             flex-direction: column;
             margin-bottom: 40px;
-	
-			& .lotto-results-section, & .home-banner-new {
-				margin-top: 40px;
-            }
-		}
 
-		& .wrap.loyalty_section_flex {
-			flex-direction: column;
-			
-			& > div {
-				max-width: 100%;
-			}
-		}
-	}
+            & .lotto-results-section,
+            & .home-banner-new {
+                margin-top: 40px;
+            }
+
+            & > div {
+                width: 55%;
+            }
+
+            @media screen and (max-width: 960px) {
+                & > div {
+                    min-width: 50%;
+                }
+            }
+
+            @media screen and (max-width: 800px) {
+                & > div {
+                    min-width: none !important;
+                    min-width: 60%;
+                }
+            }
+
+            @media screen and (max-width: 560px) {
+                & > div {
+                    max-width: 500px;
+                    overflow: hidden;
+                    width: 80%;
+                }
+            }
+
+            @media screen and (max-width: 450px) {
+                & h1 {
+                    font-size: 24px !important;
+                }
+
+                & .home-banner-new {
+                    & h2 {
+                        font-size: 24px !important;
+                    }
+                    & h2 {
+                        top: 200px !important;
+                    }
+                }
+            }
+        }
+
+        & .wrap.loyalty_section_flex {
+            flex-direction: column;
+
+            & > div {
+                max-width: 100%;
+            }
+        }
+    }
 }

@@ -1,13 +1,109 @@
+@import "../public/styles/variables";
+
 html,
 body {
 	padding: 0;
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
 		Helvetica Neue, sans-serif;
+	position: relative;
 }
 
 * {
 	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+}
+
+a.disabled {
+	pointer-events: none;
+	color: $color-disabled;
+	cursor: default;
+}
+
+.btn-primary {
+	background-color: $color-primary;
+	color: $color-white;
+
+	&:hover {
+		background-color: $color-primary-hover;
+	}
+}
+
+.btn-secondary {
+	background-color: $color-secondary;
+	color: $color-white;
+
+	&:hover {
+		background-color: $color-secondary-hover;
+	}
+}
+
+.w-100 {
+	width: 100%;
+}
+
+.modal-background {
+	position: fixed;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.1);
+	z-index: 1001;
+
+	& .modal-dialog {
+		font-family: "Gilroy-Regular";
+		background-color: $color-white;
+		min-width: 240px;
+		color: #222;
+		display: flex;
+		flex-direction: column;
+		font-weight: 400;
+
+		& .modal-header {
+			font-size: 20px;
+			font-weight: 600;
+			background-color: #eee;
+			display: flex;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+			padding: 16px;
+		}
+
+		& .modal-body {
+			font-size: 16px;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+			padding: 16px;
+		}
+
+		& .modal-footer {
+			font-size: 20px;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+			padding: 16px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+	}
+}
+
+.whole {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $color-background;
+}
+
+.flex-end {
+	display: flex;
+	justify-content: flex-end;
 }
 
 #main {
@@ -19,7 +115,7 @@ body {
 		margin-bottom: 10px;
 		font-size: 18px;
 		line-height: 26px;
-		color: #ffffff;
+		color: $color-white;
 		font-family: "Gilroy-Regular";
 	}
 }
@@ -51,6 +147,26 @@ img {
 	vertical-align: middle;
 }
 
+.logo {
+	padding: 0 15px;
+	align-self: center;
+	font-size: 24px;
+	font-weight: 600;
+	color: $color-primary;
+
+	& span:last-child {
+		color: $color-secondary;
+	}
+
+	&:hover {
+		color: $color-primary-hover;
+
+		& span:last-child {
+			color: $color-secondary-hover;
+		}
+	}
+}
+
 // header css
 #header {
 	background: linear-gradient(180deg, rgba(10, 12, 17, 0.12) 0%, rgba(19, 23, 32, 0.36) 100%);
@@ -64,21 +180,13 @@ img {
 		width: 100%;
 		position: fixed;
 		height: 64px;
-		background: linear-gradient(180deg, #111724 0%, #090e18 100%);
+		background: linear-gradient(180deg, $color-background 0%, $color-darkbg 100%);
 
 		& .left_menu {
 			display: inline-flex;
 			align-self: center;
 			height: 100%;
-
-			& a.logo {
-				padding: 0 15px;
-				align-self: center;
-
-				&:hover {
-					color: #fff;
-				}
-			}
+			vertical-align: middle;
 
 			@media screen and (max-width: 1373px) and (min-width: 990px) {
 				& a.logo {
@@ -98,8 +206,8 @@ img {
 					border-bottom: 3px solid transparent;
 
 					&:hover {
-						background-color: #000;
-						border-bottom: 3px solid #00c38a;
+						background-color: $color-black;
+						border-bottom: 3px solid $color-primary-hover;
 					}
 				}
 
@@ -108,23 +216,23 @@ img {
 					transition: 0.3s;
 					line-height: 50px;
 					height: 47px;
-					color: #fff;
+					color: $color-white;
 					padding: 0 8px;
 					font-size: 14px;
 					vertical-align: middle;
 					display: inline-block;
 
 					& .arrowsvg {
-						stroke: #fff;
+						stroke: $color-white;
 						transition: 0.3s;
 					}
 
 					&:hover {
-						color: #fff;
+						color: $color-white;
 						transition: 0.3s;
 
 						& .arrowsvg {
-							stroke: #00c38a;
+							stroke: $color-primary-hover;
 							transition: 0.3s;
 						}
 					}
@@ -143,26 +251,26 @@ img {
 				height: 100%;
 
 				& a.signin {
-					background: linear-gradient(180deg, #131720 0%, #12151b 100%);
-					box-shadow: 0px 2px 4px #000000, inset 0px 0.51px 0px rgba(255, 255, 255, 0.3);
+					background: $gradient-background;
+					box-shadow: 0px 2px 4px $color-black, inset 0px 0.51px 0px $color-lightgray;
 					border-radius: 3px;
 					background: none !important;
 					border: 0;
-					color: #fff;
+					color: $color-white;
 					padding: 10px 5px;
 					transition: 0.8s;
 					font-family: Gilroy-Bold;
-					font-size: 13px;
+					font-size: 14px;
 					line-height: 15px;
 				}
 
 				& a.register {
-					background: linear-gradient(180deg, #131720 0%, #12151b 100%);
-					box-shadow: 0px 2px 4px #000000, inset 0px 0.51px 0px rgba(255, 255, 255, 0.3);
+					background: $gradient-background;
+					box-shadow: 0px 2px 4px $color-black, inset 0px 0.51px 0px $color-lightgray;
 					border-radius: 3px;
 					background: none !important;
 					border: 0;
-					color: #fff;
+					color: $color-white;
 					padding: 10px 5px;
 					margin-left: 5px;
 					transition: 0.8s;
@@ -172,8 +280,8 @@ img {
 				}
 
 				& a:hover {
-					background: linear-gradient(180deg, #15d6a0 0%, #0ac18e 100%) !important;
-					box-shadow: 0px 2px 4px #000000, inset 0px 0.51px 0px #ffffff;
+					background: $gradient-hover !important;
+					box-shadow: 0px 2px 4px $color-black, inset 0px 0.51px 0px $color-white;
 					border-radius: 3px;
 					transition: 0.8s;
 				}
@@ -194,25 +302,27 @@ img {
 					padding: 8px;
 					font-size: 16px;
 					display: flex;
+					align-items: center;
 					border: none;
 					cursor: pointer;
 
 					& .rsm-avatar {
-						width: 48px;
-						height: 48px;
+						width: 32px;
+						height: 32px;
 						border-radius: 50%;
-						background-color: dodgerblue;
-						font-size: 24px;
+						background-color: $color-primary;
+						font-family: Gilroy-bold;
+						font-size: 16px;
 						line-height: 2;
 						text-align: center;
-						color: tomato;
+						color: $color-white;
 
 						& ~ div {
 							display: flex;
 							flex-direction: column;
 							margin-left: 8px;
 							line-height: 24px;
-							font-size: 1em;
+							font-size: 16px;
 							font-weight: 500;
 
 							& .rsm-account-balance {
@@ -230,7 +340,7 @@ img {
 					display: none;
 					position: absolute;
 					left: 0;
-					background: #090e18;
+					background: $color-darkbg;
 					min-width: 240px;
 					box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 					z-index: 1;
@@ -246,7 +356,7 @@ img {
 						}
 
 						&:hover {
-							background-color: #111724 !important;
+							background-color: $color-primary !important;
 						}
 					}
 				}
@@ -278,7 +388,7 @@ img {
 		background: linear-gradient(180deg, rgba(10, 12, 17, 0.12) 0%, rgba(19, 23, 32, 0.36) 100%);
 		z-index: 55;
 		min-width: 170px;
-		background: #111724;
+		background: $color-background;
 
 		& li {
 			padding: 10px 0;
@@ -300,7 +410,7 @@ img {
 
 		&:hover .header-bitcoin-values-item .title,
 		&:hover .header-bitcoin-values-item .value {
-			color: #00c38a;
+			color: $color-primary-hover;
 			transition: 0.3s;
 		}
 	}
@@ -310,7 +420,7 @@ img {
 		background: #13d19c;
 		border-radius: 4px;
 		padding: 8px 15px;
-		color: #fff;
+		color: $color-white;
 		font-family: "Gilroy-Bold";
 		font-size: 16px;
 		height: unset;
@@ -381,14 +491,20 @@ img {
 	& .playgroup-result {
 		& .play-in-group-section > h1 {
 			font-size: 30px;
-			color: #fff;
+			color: $color-white;
 			line-height: 40px;
 			margin-bottom: 40px;
 		}
 	}
 }
 
-@media screen and (max-width: 1100px) {
+.lotterydetail {
+	& form {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 1180px) {
 	#header .menu {
 		display: none;
 	}
@@ -396,7 +512,7 @@ img {
 	#header .new_header_mobile_menu {
 		position: relative;
 		height: 60px;
-		background: #111724;
+		background: $color-background;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -407,6 +523,8 @@ img {
 
 		& .new_header_menu_logo {
 			max-width: 200px;
+			font-size: 24px;
+			font-weight: 600;
 		}
 
 		& .new_header_menu_logo img {
@@ -436,15 +554,15 @@ img {
 			height: 0;
 			overflow: hidden;
 			width: 100%;
-			background: #111724;
+			background: $color-background;
 			transition: ease-in-out 0.5s;
 
 			& > ul > li:hover:not(:last-child) {
-				background-color: #00c38a;
+				background-color: $color-primary-hover;
 			}
 
 			& li.has-child > ul > li:hover {
-				background-color: #090e18;
+				background-color: $color-darkbg;
 			}
 		}
 
@@ -462,7 +580,7 @@ img {
 
 		& #menu-container li .button {
 			background: transparent;
-			color: #fff;
+			color: $color-white;
 			transition: 0.8s;
 			font-family: Gilroy-Bold;
 			line-height: 15px;
@@ -486,7 +604,7 @@ img {
 		& #menu-container button,
 		& .wrap-top-menu li {
 			width: 100%;
-			font-size: 17px;
+			font-size: 16px;
 			font-family: "Gilroy-Regular";
 			color: white;
 			box-sizing: border-box;
@@ -499,7 +617,7 @@ img {
 
 		& .wrap-top-menu li:hover button,
 		& .wrap-top-menu li:not(.has-child.mobile-menu):not(.header_mobile_menu_bitcoin_values_part):hover a {
-			background: #00c38a;
+			background: $color-primary-hover;
 		}
 
 		& .wrap-top-menu li.header_mobile_menu_bitcoin_values_part .header-bitcoin-values {
@@ -533,7 +651,7 @@ img {
 		& .wrap-top-menu li a {
 			width: 100%;
 			padding: 20px;
-			font-size: 17px;
+			font-size: 16px;
 			font-family: "Gilroy-Regular";
 			color: white;
 			box-sizing: border-box;
@@ -544,6 +662,108 @@ img {
 		height: 1100px;
 		transition: ease-in-out 0.8s;
 	}
+
+	.lotterydetail .cardlist .tabin_main_select {
+		flex-direction: column;
+	}
+
+	.lotterydetail {
+		& .select_num_part_wrapper,
+		& .lt_numbers_wrapper {
+			grid-template-columns: repeat(9, 1fr);
+		}
+
+		& .select_num_col {
+			padding: 0;
+		}
+
+		& .beton-header {
+			height: auto;
+		}
+
+		& .lotto-timer table > tbody > tr > td {
+			display: table-cell;
+			& > div {
+				justify-content: center;
+			}
+		}
+
+		& .beton-header-mobile-section {
+			padding: 10px;
+		}
+	}
+}
+
+#middle .lotteries-table,
+#middle .tablesorter-result {
+	& thead th {
+		background-color: transparent;
+		font-family: Gilroy-Bold;
+		font-size: 24px;
+	}
+
+	& tbody td {
+		border-color: transparent !important;
+		padding: 11px 11px 11px 20px;
+
+		& .result_number {
+			width: 360px;
+		}
+	}
+
+	@media screen and (max-width: 1150px) {
+		& thead th,
+		& tbody td {
+			font-size: 16px;
+		}
+
+		& tbody td {
+			padding: 0 5px;
+		}
+	}
+
+	@media screen and (max-width: 720px) {
+		& th:nth-of-type(1),
+		& td:nth-of-type(1) {
+			display: none;
+		}
+
+		& tbody td .result_number {
+			width: 100%;
+		}
+	}
+}
+
+.lotto_banner {
+	display: flex;
+	align-items: center;
+
+	& .slogan_block_1,
+	.slogan_block_2 {
+		width: 40%;
+	}
+
+	@media screen and (max-width: 960px) {
+		& .slogan_block_1,
+		.slogan_block_2 {
+			width: 50%;
+		}
+	}
+
+	@media screen and (max-width: 800px) {
+		justify-content: center;
+
+		& .slogan_block_1,
+		.slogan_block_2 {
+			width: 60%;
+			padding: 0;
+			margin: 0;
+
+			@media screen and (max-width: 640px) {
+				width: 80%;
+			}
+		}
+	}
 }
 
 .submit {
@@ -551,21 +771,21 @@ img {
 	padding: 8px;
 	border-radius: 4px;
 	width: 100% !important;
-	border: 1px solid #00c38a;
-	background-color: #00c38a;
+	border: 1px solid $color-primary-hover;
+	background-color: $color-primary-hover;
 
 	&:disabled {
-		border: 1px solid #999999;
-		background-color: #999999;
+		border: 1px solid $color-disabled;
+		background-color: $color-disabled;
 
 		&:hover {
-			border: 1px solid #999999;
-			background-color: #999999;
+			border: 1px solid $color-disabled;
+			background-color: $color-disabled;
 		}
 	}
 
 	&:hover {
-		background-color: #00d696;
+		background-color: $color-primary-hover;
 		transition: ease-in-out 0.3s;
 	}
 }
@@ -573,17 +793,902 @@ img {
 .error-msg {
 	padding: 0 16px;
 	font-weight: 400;
-	font-size: 0.75em;
+	font-size: 12px;
 	color: red;
 	text-align: center;
+	width: 100%;
 }
 
+.success-msg {
+	padding: 0 16px;
+	font-weight: 400;
+	font-size: 14px;
+	color: $color-success;
+	text-align: center;
+	width: 100%;
+}
+
+/* cart page */
+.cart-wrapper {
+	font-family: Gilroy-Bold;
+
+	& .cart-page {
+		& .cart-static {
+			font-size: 12px;
+			text-transform: uppercase;
+			width: 100%;
+			color: #0169b2;
+			line-height: 25px;
+			font-weight: bolder;
+			display: flex;
+
+			& .part1 {
+				width: 56%;
+			}
+			& .part2,
+			& .part3,
+			& .part4,
+			& .part5 {
+				width: 10%;
+			}
+
+			& > span {
+				font-size: 24px;
+				color: $color-white;
+				padding: 1%;
+			}
+		}
+
+		@media screen and (max-width: 1024px) {
+			& .cart-static {
+				& .part1 {
+					width: 45%;
+				}
+				& .part2,
+				& .part3,
+				& .part4 {
+					width: 15%;
+				}
+
+				& > span {
+					font-size: 16px;
+					color: $color-white;
+					padding: 1%;
+				}
+			}
+		}
+
+		& .products {
+			background: linear-gradient(180deg, $color-background 0%, $color-darkbg 100%);
+			box-shadow: 0px 2px 4px $color-black, inset 0px 0.51px 0px rgb(255 255 255 / 30%);
+			border-radius: 3px;
+			margin-bottom: 15px;
+			border: none;
+			margin-bottom: 18px;
+			padding: 16px;
+
+			& .product {
+				display: flex;
+				& .product-title {
+					display: flex;
+					width: 56%;
+
+					& .product-cover {
+						margin-right: 48px;
+
+						& .cover {
+							margin-left: 5px;
+							background-image: url("/images/logos/logos-sprite.png");
+							background-size: 500% 400%;
+							position: relative;
+							top: 3px;
+							width: 70px;
+							height: 70px;
+						}
+
+						.cover.MegaMillions {
+							background-position: 0px -696px;
+						}
+
+						.cover.MegaJackpot {
+							background-position: 0px -770px;
+						}
+
+						.cover.Lotto649 {
+							background-position: 138px 0px;
+						}
+						.cover.OzLotto {
+							background-position: 0px 213px;
+						}
+
+						.cover.ElGordo {
+							background-position: 419px 214px;
+						}
+
+						.cover.SuperEnalotto {
+							background-position: 70px 143px;
+						}
+
+						.cover.SuperEnalotto {
+							margin-left: -10px;
+						}
+
+						.cover.UkLotto {
+							background-position: 70px 0px;
+							/*    margin-left: 15px;*/
+						}
+
+						.cover.BTCPowerPlay {
+							background-position: -75px 72px;
+						}
+
+						.cover.EuroMillions {
+							background-position: 210px 0px;
+						}
+
+						.cover.EuroJackpot {
+							background-position: 210px 214px;
+						}
+
+						.cover.NewYorkLotto {
+							/*margin-left:11px;*/
+							background-position: -420px 0px;
+						}
+
+						.cover.LaPrimitiva {
+							background-position: -68px 214px;
+						}
+
+						.cover.PowerBall {
+							background-position: 0px 0px;
+							margin-left: 0px;
+						}
+
+						.cover.BonoLoto {
+							background-position: 140px 142px;
+						}
+					}
+
+					& .product-name {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						& span {
+							font-size: 18px;
+							color: $color-white;
+						}
+					}
+				}
+
+				& .lines,
+				& .draws,
+				& .price {
+					font-size: 18px;
+					color: $color-white;
+					width: 10%;
+					height: 30px;
+					text-align: left;
+					padding: 0 24px;
+					line-height: 70px;
+				}
+
+				& .price {
+					font-size: 22px;
+					color: $color-primary-hover;
+					text-shadow: 0px 6px 16px rgb(19 209 156 / 35%);
+				}
+			}
+
+			@media screen and (max-width: 1024px) {
+				& .product {
+					& .product-title {
+						width: 45%;
+					}
+					& .lines,
+					& .draws,
+					& .price {
+						width: 15%;
+					}
+
+					& > span {
+						font-size: 16px;
+						color: $color-white;
+						padding: 1%;
+					}
+				}
+			}
+
+			@media screen and (max-width: 648px) {
+				& .product {
+					& .product-title {
+						width: 45%;
+						& .product-cover {
+							display: none;
+						}
+					}
+
+					& .lines,
+					& .draws,
+					& .price {
+						line-height: 30px;
+					}
+				}
+			}
+		}
+	}
+
+	& .cart-error {
+		color: red;
+		font-family: Gilroy-Regular;
+		font-weight: 300;
+		padding: 16px;
+		word-break: break-all;
+	}
+
+	& .cart-total {
+		display: flex;
+		align-items: center;
+		padding: 16px 0;
+
+		& .holder {
+			width: 66%;
+		}
+		& .label,
+		& .value {
+			margin: 0 16px;
+		}
+
+		& .label {
+			font-size: 22px;
+			color: $color-white;
+		}
+
+		& .value {
+			color: $color-primary-hover;
+			font-size: 28px;
+		}
+
+		@media screen and (max-width: 1024px) {
+			& .holder {
+				width: 56%;
+			}
+		}
+
+		@media screen and (max-width: 648px) {
+			justify-content: center;
+			padding: 16px 20%;
+
+			& .holder {
+				display: none;
+			}
+		}
+	}
+
+	& .cart-actions {
+		display: flex;
+		padding: 24px;
+		align-items: center;
+		height: 96px;
+
+		& .title {
+			flex-grow: 1;
+			font-size: 22px;
+			color: $color-white;
+		}
+
+		& .ticker-select {
+			width: 12%;
+			min-width: 120px;
+
+			& select {
+				padding: 10px;
+				width: 100%;
+
+				&:after {
+					content: "";
+					position: absolute;
+					background: "/images/select-arrow.png" no-repeat;
+					right: 10px;
+					top: 15px;
+					background-size: contain;
+					width: 10px;
+					height: 22px;
+				}
+
+				&:focus {
+					border: 1px solid $color-primary-hover;
+					box-sizing: border-box;
+					box-shadow: 0px 0px 4px rgb(19 209 156 / 45%);
+					border-radius: 8px;
+				}
+			}
+		}
+
+		& .action {
+			margin-left: 32px;
+
+			& > input {
+				background: #13d19c;
+				border-radius: 4px;
+				border: none;
+				font-size: 18px;
+				color: $color-white;
+				padding: 16px 32px;
+				width: 100%;
+				max-width: 100%;
+				height: auto;
+				margin: 0;
+			}
+		}
+
+		@media screen and (max-width: 648px) {
+			flex-wrap: wrap;
+			justify-content: space-between;
+			& .title {
+				flex-grow: 0;
+				width: 45%;
+			}
+
+			& .ticker-select {
+				width: 45%;
+			}
+			& .action {
+				margin: 0;
+				margin-top: 16px;
+				width: 100% !important;
+			}
+		}
+	}
+}
+
+// my account page
+.wrap-my-account {
+	padding: 0px 0 40px;
+	color: $color-white;
+	font-size: 16px;
+	margin-top: 20px;
+	font-family: Gilroy-Bold;
+
+	& .my-account-title > h1 {
+		font-size: 32px;
+		margin-bottom: 32px;
+	}
+
+	& .my-account-contents {
+		& .tab-bar-container {
+			display: flex;
+
+			& ul.tab-bar {
+				display: inline-block;
+
+				& li {
+					background: linear-gradient(180deg, $color-background 0%, $color-darkbg 100%);
+					box-shadow: 0px 2px 4px $color-black, inset 0px 0.51px 0px rgb(255 255 255 / 30%);
+					border-radius: 3px;
+					padding: 8px;
+					margin-right: 16px;
+					display: inline-block;
+
+					& a {
+						font-size: 18px;
+						color: $color-white;
+						text-shadow: 0px 4px 8px rgb(19 209 156 / 15%);
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
+						display: flex;
+						text-decoration: none;
+						flex-direction: column;
+						width: 112px;
+						height: 96px;
+
+						&.active {
+							color: $color-primary !important;
+						}
+
+						& > i {
+							width: 55px;
+							height: 55px;
+							margin-top: 8px;
+							margin-bottom: 8px;
+							display: block;
+							background-size: contain;
+
+							&.transactions {
+								background-image: url(/images/ico_tranzactions.svg);
+							}
+
+							&.tickets {
+								background-image: url(/images/ico_tickets.svg);
+							}
+
+							&.products {
+								background-image: url(/images/ico_products.svg);
+							}
+						}
+					}
+				}
+			}
+
+			& .actions-bar {
+				display: inline-block;
+
+				& .winning {
+					& span {
+						font-size: 20px;
+						line-height: 32px;
+						margin: 8px;
+						margin-left: 16px;
+						display: inline-block;
+						&.money {
+							color: $color-primary-hover;
+						}
+					}
+				}
+
+				& .buttons {
+					& .button {
+						margin: 5px;
+						background: $color-primary;
+						border-radius: 4px;
+						padding: 8px 16px;
+						text-align: center;
+						color: $color-white;
+						font-family: "Gilroy-Bold";
+						text-decoration: none;
+						font-size: 16px;
+						min-width: 120px;
+						display: inline-block;
+						margin-left: 16px;
+					}
+				}
+			}
+
+			@media screen and (max-width: 960px) {
+				display: block;
+				justify-content: space-between;
+				padding: 16px;
+
+				& ul.tab-bar,
+				& .actions-bar {
+					display: flex;
+					justify-content: space-between;
+				}
+
+				& ul.tab-bar {
+					padding: 0;
+				}
+				& .actions-bar {
+					margin: 24px 24px 24px 0;
+				}
+			}
+
+			@media screen and (max-width: 640px) {
+				padding: 0;
+
+				& ul.tab-bar {
+					padding: 0;
+
+					& li {
+						margin: 0;
+						& a {
+							max-width: 96px;
+						}
+					}
+				}
+
+				& .actions-bar {
+					flex-wrap: wrap;
+					margin: 24px 0;
+
+					& .winning,
+					& .buttons {
+						width: 100%;
+						justify-content: center;
+						display: flex;
+					}
+
+					& .buttons .button {
+						width: 45%;
+					}
+				}
+			}
+		}
+
+		& .tab-page {
+			& .account-form {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				margin: 16px 0;
+
+				& > div.wrapper {
+					width: 48%;
+					display: flex;
+					align-items: center;
+					margin: 16px 0;
+
+					& label {
+						width: 30%;
+						text-align: right;
+						line-height: 1.6;
+						font-size: 18px;
+					}
+
+					& > input,
+					& > select {
+						width: 65%;
+						margin-left: 16px;
+						flex: 1;
+						align-self: stretch;
+						min-width: 360px;
+						height: 48px;
+						border: 1px solid $color-white;
+						box-sizing: border-box;
+						box-shadow: 0px 4px 8px rgb(255 255 255 / 15%);
+						border-radius: 8px;
+						background-color: $color-background;
+						color: $color-white;
+						padding: 5px 15px;
+
+						&:focus {
+							border: 1px solid $color-primary-hover;
+						}
+					}
+				}
+
+				& .actions {
+					display: flex;
+					width: 100%;
+					justify-content: flex-end;
+					padding: 16px 0;
+
+					&.left {
+						justify-content: flex-start;
+					}
+
+					& .chpwd-button {
+						font-family: Gilroy-Bold;
+						font-size: 24px;
+						color: $color-primary-hover;
+						text-shadow: 0px 4px 8px rgb(19 209 156 / 15%);
+						cursor: pointer;
+					}
+				}
+
+				& .update-button {
+					background: #13d19c !important;
+					border-radius: 4px;
+					font-family: Gilroy-Bold;
+					font-size: 18px;
+					max-width: 315px;
+					width: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					padding: 10px;
+					color: white;
+				}
+			}
+
+			@media screen and (max-width: 1160px) {
+				& .account-form {
+					max-width: 640px;
+					width: 100%;
+					margin: auto;
+
+					& > div.wrapper {
+						width: 100%;
+					}
+				}
+			}
+
+			& .data-table {
+				width: 100%;
+				overflow-x: auto;
+				& table {
+					min-width: 720px;
+					border: none;
+					border-collapse: collapse;
+					overflow: auto;
+					margin: 16px 0;
+					width: 100%;
+
+					& thead {
+						background: linear-gradient(180deg, $color-background 0%, $color-darkbg 100%);
+						box-shadow: 0px 2px 4px $color-black, inset 0px 0.51px 0px rgb(255 255 255 / 30%);
+						border-radius: 3px;
+						font-weight: normal;
+						line-height: 42px;
+						color: $color-white;
+
+						& th {
+							font-family: Gilroy-Bold;
+							font-size: 18px;
+							color: $color-white;
+							padding-top: 10px;
+							padding-bottom: 10px;
+							height: 30px;
+							text-align: center;
+						}
+					}
+
+					& tbody {
+						& tr td {
+							font-family: Gilroy-Regular;
+							height: 48px;
+							font-size: 16px;
+							line-height: 3;
+							text-align: center;
+							font-weight: normal;
+							border: 1px solid $color-white;
+						}
+					}
+
+					& .btn_dark-blue {
+						background-color: rgb(29, 50, 101) !important;
+					}
+				}
+
+				& .tickets-table,
+				& .products-table {
+					& th,
+					& td {
+						width: 14% !important;
+					}
+
+					& .collapsable-table-row {
+						border: 1px solid $color-white;
+						border-radius: 4px;
+						min-width: 720px;
+						margin: 16px 0;
+
+						& table.header {
+							margin: 0;
+							cursor: pointer;
+
+							& th,
+							& td {
+								font-weight: 500 !important;
+								border: none;
+								font-size: 18px;
+							}
+
+							& tbody {
+								border-radius: 4px;
+
+								& td .drawer-header-icon {
+									width: 26px;
+									height: 26px;
+									background: #00c38a url("/images/right_long_white_arrow.svg") no-repeat center;
+									border-radius: 4px;
+									margin: auto;
+								}
+
+								& td.center {
+									vertical-align: middle;
+									& img {
+										height: 20px;
+										margin-top: -3px;
+									}
+								}
+							}
+						}
+
+						& table.contents {
+							margin: 0;
+							width: 100%;
+
+							& th,
+							& td {
+								font-weight: 500 !important;
+								width: 33% !important;
+								border: none;
+								font-size: 18px;
+								padding: 0;
+							}
+
+							& thead {
+								border-top: 1px solid $color-white;
+								border-bottom: 1px solid $color-white;
+							}
+
+							& tbody {
+								border-radius: 4px;
+
+								& td .drawer-header-icon {
+									width: 26px;
+									height: 26px;
+									background: #00c38a url("/images/right_long_white_arrow.svg") no-repeat center;
+									border-radius: 4px;
+									margin: auto;
+								}
+
+								& td.center {
+									vertical-align: middle;
+									& img {
+										height: 20px;
+										margin-top: -3px;
+									}
+								}
+
+								& td.selected-numbers {
+									height: auto;
+									padding: 8px 0;
+
+									& div {
+										display: inline-block;
+										margin: auto;
+									}
+								}
+							}
+						}
+
+						& table.hidden {
+							height: 0;
+						}
+					}
+				}
+
+				& .products-table {
+					& th,
+					& td {
+						width: 12.5% !important;
+					}
+
+					& .contents {
+						border-top: 1px solid $color-white;
+
+						& > div {
+							padding: 16px;
+							text-align: center;
+							&:first-child {
+								display: flex;
+								align-items: center;
+								border-bottom: 1px solid $color-white;
+								padding: 16px;
+
+								& > div:last-child {
+									flex-grow: 1;
+									text-align: center;
+
+									& div {
+										display: inline-block;
+									}
+								}
+							}
+						}
+					}
+					& .hidden {
+						height: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+#main {
+	& .main-content {
+		& h1.item-title {
+			font-size: 24px;
+			line-height: 42px;
+			color: #00c58a;
+			font-family: "Gilroy-bold";
+			margin-bottom: 40px;
+			text-transform: none;
+
+			&:not(:first-child) {
+				margin-top: 100px;
+			}
+		}
+
+		&.affiliate {
+			display: flex;
+
+			@media screen and (max-width: 840px) {
+				flex-direction: column;
+			}
+
+			& .content {
+				// flex-grow: 1;
+				& h1.item-title {
+					font-size: 22px;
+					line-height: 36px;
+					color: #00c58a;
+					font-family: "Gilroy-bold";
+					margin-bottom: 20px;
+	
+					&:not(:first-child) {
+						margin-top: 40px;
+					}
+				}
+			}
+
+			& .action {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				& a.playNowBtn {
+					font-size: 20px;
+					color: $color-white;
+					padding: 10px 30px;
+					background: $color-primary;
+					border-radius: 5px;
+					transition: 0.3s;
+					line-height: 30px;
+					min-width: 144px;
+				
+					&:hover {
+							background: $color-primary-hover;
+							transition: 0.3s;
+					}
+				}
+			}
+		}
+	}
+}
+
+// terms page
+#terms {
+	& .terms-header {
+		height: 64px;
+		font-size: 32px;
+		font-weight: 500;
+		line-height: 2;
+		text-align: center;
+		text-transform: uppercase;
+		color: white;
+	}
+}
+
+.paginator {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 16px;
+	color: $color-white;
+	background-color: $color-background;
+	font-size: 20px;
+	font-weight: 500;
+
+	& button {
+		background: linear-gradient(180deg, #111724 0%, #090e18 100%);
+		box-shadow: 0px 2px 4px #000000, inset 0px 0.51px 0px rgb(255 255 255 / 30%);
+		border-radius: 3px;
+		border: none;
+		width: 32px;
+		height: 32px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 0 !important;
+		color: $color-white;
+
+		& span {
+			background: url("/images/left_white_arrow.svg") no-repeat center;
+			background-size: 15px 15px;
+			width: 15px;
+			height: 15px;
+		}
+
+		&:last-child span {
+			transform: rotate(180deg);
+		}
+	}
+
+	& span {
+		padding: 0 8px;
+	}
+}
 // spinner
 .simple-spinner {
-	color: #00c38a;
-	font-size: 20px;
-	width: 0.75em;
-	height: 0.75em;
+	color: $color-primary-hover;
+	font-size: 20;
+	width: 12px;
+	height: 12px;
 	border-radius: 50%;
 	position: absolute;
 	text-indent: -9999em;
@@ -592,8 +1697,8 @@ img {
 	-webkit-transform: translateZ(0);
 	-ms-transform: translateZ(0);
 	transform: translateZ(0);
-	left: calc(50% - 0.4em);
-	top: calc(50% - 0.4em);
+	left: calc(50% - 6px);
+	top: calc(50% - 6px);
 }
 @-webkit-keyframes simple_spinner {
 	0%,

@@ -1,0 +1,58 @@
+[
+    {
+        "title": "What is <span class='text-primary'>Bitcoin</span><span class='text-secondary'>Lotterys.com</span>?<span class=\"fa right fa-plus\">",
+        "answer": "The Bitcoin lottery platform is an online lottery ticketing system that uses the cryptocurrency"
+    },
+    {
+        "title": "How do I create an account?<span class=\"fa right fa-plus\">",
+        "answer": "Click the Register button to create a new account. Fill in the required details, we may need your number to call you if you win a major prize. To return to your account, simply click the My Account menu tab and enter your unique password. Don’t give out your account information to anyone, or they will have access to your credit balance."
+    },
+    {
+        "title": "How do I Deposit?<span class=\"fa right fa-plus\">",
+        "answer": "You can be playing in just a couple seconds! Simply click the Deposit button, select the cryptocurrency you want to use and follow the prompts and wallet address QR codes. As soon as we receive confirmation through the blockchain we automatically credit your account. Once you have credit, playing is instant."
+    },
+    {
+        "title": "How do I withdraw?<span class=\"fa right fa-plus\">",
+        "answer": "At the 'MY ACCOUNT' menu bar of your screen, you will find a section called \"Withdraw\". Click that button, fill out the amount and destination address and click \"Withdraw\"."
+    },
+    {
+        "title": "Is there a full screen mode?<span class=\"fa right fa-plus\">",
+        "answer": "Yes. There is a button next to the games buttons that will hide most art elements on the page, which is excellent for full screen viewing."
+    },
+    {
+        "title": "How do I play the Lottery?<span class=\"fa right fa-plus\">",
+        "answer": "All of our games have a Play Now tab. Simply click the Play Now Tab to learn how to play the Lottery"
+    },
+    {
+        "title": "How do I change my username?<span class=\"fa right fa-plus\">",
+        "answer": "To change your username, select 'My Account'. It is located in the Header menu bar."
+    },
+    {
+        "title": "Can I return to my account later?<span class=\"fa right fa-plus\">",
+        "answer": "If you save the unique URL found on 'My Account' in the Header menu, you can return to your account at any time. You should keep your account_key private since it provides direct access to your account."
+    },
+    {
+        "title": "How can I protect my account?<span class=\"fa right fa-plus\">",
+        "answer": "<span class='text-primary'>Bitcoin</span><span class='text-secondary'>Lotterys</span> now supports account passwords and two factor authentication (2fa). If you set up an account password, you will be asked to enter this password every time you initially access your account using your unique URL. If you enable 2fa, you will need to enter a code from your smart phone to access your account, and to make withdrawals. You will be able to access these features from the 'Extra Security' section in 'My Account'"
+    },
+    {
+        "title": "Can I play on my mobile phone?<span class=\"fa right fa-plus\">",
+        "answer": "Our site works on mobile devices."
+    },
+    {
+        "title": "What is the minimum deposit?<span class=\"fa right fa-plus\">",
+        "answer": "In <span class='text-primary'>Bitcoin</span><span class='text-secondary'>Lotterys</span> your minimum deposit is The cost of a Original Lottery Ticket."
+    },
+    {
+        "title": "How does the referral program work?<span class=\"fa right fa-plus\">",
+        "answer": "Contact us at <a href=\"mailto:support@bitcoinlotterys.com\">support@<span class='text-primary'>bitcoin</span><span class='text-secondary'>lotterys.com</span></a>."
+    },
+    {
+        "title": "What if I can't stop playing?<span class=\"fa right fa-plus\">",
+        "answer": "Below are some resources that may be helpful.<br /> http://www.helpguide.org/<br /> http://www.youthgambling.com/ <br /> https://www.ncpgambling.org/"
+    },
+    {
+        "title": "How can I contact you?<span class=\"fa right fa-plus\">",
+        "answer": "<a href=\"mailto:support@bitcoinlotterys.com\">support@<span class='text-primary'>bitcoin</span><span class='text-secondary'>lotterys.com</span></a><br />Twitter: <br />Telegram: "
+    }
+]

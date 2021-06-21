@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Layout from 'components/layout';
 import { formatDate } from 'helpers/dateformat';
 import { getResultsByBrand } from 'service/globalinfo';
 
 export default function LotteryResultsPage({ results }) {
+	const router = useRouter();
+	const gotoDetail = useCallback(link => router.push(link), []);
 	return (
 		<Layout>
 			<main id="main" className="clearfix">
@@ -21,16 +24,18 @@ export default function LotteryResultsPage({ results }) {
 											<th className="header">Country</th>
 											<th className="header">Lottery</th>
 											<th className="header">Last draw</th>
-											<th className="header">Payout</th>
+											<th className="header">Jackpot</th>
 											<th style={{ backgroundImage: 'none' }}>Winning Numbers</th>
 										</tr>
 									</thead>
 									<tbody className="allresult">
 										{results && results.map((item, idx) => (
 											<React.Fragment key={idx}>
-												<tr>
+												<tr onClick={() => gotoDetail(`/results/${item.name.replace(/ /g, '').toLowerCase()}`)}>
 													<td><img src={item.flag ?? '/images/logo-icon.svg'} />&nbsp;&nbsp;{item.country}</td>
-													<td><a href={`/${item.name.toLowerCase()}-results`}>{item.name}</a></td>
+													<td>
+														<Link href={`/results/${item.name.toLowerCase()}`}>{item.name}</Link>
+													</td>
 													<td>{formatDate(new Date(item.date))}</td>
 													<td>{item.earned.unit}&nbsp;{item.earned.amount}</td>
 													<td>
@@ -59,9 +64,9 @@ export default function LotteryResultsPage({ results }) {
 							<div className="results-page">
 								<h1>Real-Time Results !</h1>
 								<p>
-									Bitcoin.com provides players with a variety of lotteries from the US, Canada and Europe.
-                                </p>
-								<p>With Bitcoin.com, your lottery results online are just a click away, at any time and any place. As long as you have internet access alongside a computing device, checking lottery results is now as easy as one click of your mouse.</p>
+									<span className='text-primary'>Bitcoin</span><span className='text-secondary'>Lotterys.com</span> provides players with a variety of lotteries from around the world.
+                </p>
+								<p>With <span className='text-primary'>Bitcoin</span><span className='text-secondary'>Lotterys.com</span>, your lottery results online are just a click away, at any time and any place. As long as you have internet access to a computer or a mobile, checking lottery results is now as easy as one click of your mouse.</p>
 								<h1></h1>
 							</div>
 						</div>
@@ -77,8 +82,14 @@ export const getStaticProps = async (ctx) => {
 		const res = await getResultsByBrand();
 		const results = res.filter(item => (
 			item.LotteryTypeId !== 13 && item.LotteryTypeId !== 24 &&
-			item.LotteryTypeId !== 27 && item.LotteryTypeId !== 36
-		)).map(item => {
+			item.LotteryTypeId !== 27 && item.LotteryTypeId !== 36 &&
+			item.LotteryTypeId !== 34 && item.LotteryTypeId !== 35 &&
+			item.LotteryTypeId !== 45 && item.LotteryTypeId !== 46
+		)).filter(item => {
+			return !(item.LotteryName.includes('BTC Power Play') ||
+			item.LotteryName.includes('MegaJackpot') ||
+			item.LotteryName.includes('Raffle'));
+		}).map(item => {
 			let scores = null;
 			if (item.WinningResult) {
 				const arr = item.WinningResult.split(/,|#/g);
@@ -94,7 +105,7 @@ export const getStaticProps = async (ctx) => {
 				}
 			}
 
-			let flag = `/images/flag_${item.CountryName}.png`;
+			let flag = `/images/flag_${item.CountryName.toLowerCase()}.png`;
 			if (item.LotteryName.includes('BTC Power Play') ||
 				item.LotteryName.includes('MegaJackpot') ||
 				item.LotteryName.includes('Raffle')) flag = null;
@@ -105,7 +116,7 @@ export const getStaticProps = async (ctx) => {
 				country: item.CountryName,
 				code: item.CountryCode,
 				date: item.DrawDate,
-				earned: { unit: item.LotteryCurrency, amount: item.RollOver },
+				earned: { unit: item.LotteryCurrency, amount: item.Jackpot },
 				scores, flag
 			}
 		});
@@ -114,7 +125,7 @@ export const getStaticProps = async (ctx) => {
 			props: {
 				results
 			},
-			revalidate: 10
+			revalidate: 60
 		}
 	} catch (error) {
 		console.log(error);

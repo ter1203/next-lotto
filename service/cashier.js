@@ -1,19 +1,45 @@
-import { API_BASE_URL, SEC_TOKEN } from './config';
+import { API_BASE_URL, SEC_TOKEN, BRAND_ID } from './config';
 import { authPost } from './base';
 
 const BASE_URL = `${API_BASE_URL}/cashier`;
 
-export const prepareOrder = async () => {
+export const requestWithdraw = async (amount, ticker, address) => {
 	return await authPost(
-		`${BASE_URL}/get-all-lotteries`,
-		SEC_TOKEN
+		`${BASE_URL}/withdraw`,
+		SEC_TOKEN,
+		{ amt: amount, walletAddress: address, Ticker: ticker }
 	);
 }
 
-export const confirmProcessorOrdere = async () => {
+export const prepareOrder = async (MemberId, numbers) => {
+	return await authPost(
+		`${BASE_URL}/prepare-order`,
+		SEC_TOKEN,
+		{ MemberId, BrandId: BRAND_ID, ProductNumsLottery: numbers }
+	);
+}
+
+export const confirmProcessorOrder = async (
+	memberId,
+	email,
+	session,
+	ticker,
+	orderData
+) => {
 	return await authPost(
 		`${BASE_URL}/processor-confirm-order`,
-		SEC_TOKEN
+		SEC_TOKEN,
+		{ 
+			PhoneOrEmail: email,
+			ProcessorApi: '',
+			AffiliatedId: 0,
+			ReedemCode: '',
+			SessionId: session,
+			MemberId: memberId,
+			Ticker: ticker,
+			OrderData: orderData,
+			BrandID: BRAND_ID
+		}
 	);
 }
 
@@ -38,10 +64,11 @@ export const confirmProcessorFireGameOrder = async () => {
 	);
 }
 
-export const confirmProcessorDeposit = async () => {
+export const confirmProcessorDeposit = async (MemberId, Amount, Ticker) => {
 	return await authPost(
-		`${BASE_URL}/processor-confirm-fire-game-order`,
-		SEC_TOKEN
+		`${BASE_URL}/processor-confirm-deposit`,
+		SEC_TOKEN,
+		{ BrandId: BRAND_ID, MemberId, Amount, Ticker }
 	);
 }
 

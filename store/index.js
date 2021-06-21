@@ -2,11 +2,19 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
+const storeItem = 'lottery-bitcoin';
+
 const loadState = () => {
   try {
-    const serializedState = localStorage.getItem('lottery-bitcoin');
-    if (serializedState === null) {
+    const serializedState = localStorage.getItem(storeItem);
+    if (!serializedState || !serializedState.modified_at) {
       return {};
+    }
+
+    // expired data? check if it is 30 mins old
+    const silence = (new Date().getTime() - serializedState.modified_at) / 1000;
+    if (silence > 1800) {    // 30 mins
+      return {}
     }
 
     return JSON.parse(serializedState);
@@ -17,8 +25,9 @@ const loadState = () => {
 
 const saveState = (state) => {
   try {
+    state.modified_at = new Date().getTime();
     const serializedState = JSON.stringify(state);
-    localStorage.setItem('lottery-bitcoin', serializedState);
+    localStorage.setItem(storeItem, serializedState);
   } catch (error) {
     console.log('Local Storage: Save failed with code ', error);
   }
@@ -27,6 +36,7 @@ const saveState = (state) => {
 const peristedState = loadState();
 export default function configureStore() {
   const storeEnhancers = compose;
+  saveState({});
   const store = createStore(
     rootReducer,
     peristedState,

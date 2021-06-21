@@ -1,5 +1,5 @@
-import React, { useReducer, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useReducer, useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import { useRouter } from 'next/router'
 import Layout from 'components/layout';
@@ -23,6 +23,15 @@ const LoginPage = () => {
 	const { email, password, remember, error, busy } = state;
 	const dispatch = useDispatch();
 	const router = useRouter();
+	const user = useSelector(state => state.user);
+	const { referer } = router.query;
+
+	console.log(referer);
+	useEffect(() => {
+		if (user.profile) {
+			router.replace(referer ? decodeURIComponent(referer) : '/');
+		}
+	}, [user.profile, router, referer])
 
 	const handleEmailChange = useCallback(e => {
 		setState({
@@ -51,19 +60,19 @@ const LoginPage = () => {
 		try {
 			setState({ busy: true });
 			await dispatch(UserActions.login(email.value, password.value));
-			router.push('/');
+			router.replace(referer ? decodeURIComponent(referer) : '/');
 		} catch (error) {
 			setState({ busy: false, error });
 		}
 	}
 
-	const enable = !email.error && !password.error && !busy;
+	const enable = !email.error && !password.error && !busy && password.value.length && email.value.length;
 	return (
 		<Layout>
 			<main className={styles.container}>
 				<form className={styles.form} method='post' target='#here'>
 					{busy && <div className="simple-spinner"></div>}
-					<a href='/' className={styles.close}></a>
+					<Link href='/'><a className={styles.close}></a></Link>
 					<h1>Log in with your account</h1>
 					{error && <section className='error-msg'>{error}</section>}
 					<section className={styles.inputGroup}>
@@ -93,7 +102,7 @@ const LoginPage = () => {
 							value={remember}
 							onChange={handleRememberChange}
 						>
-							Remeber Me
+							Remember Me
 					</CheckBox>
 					</section>
 					<section className={styles.actionGroup}>

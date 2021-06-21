@@ -35,6 +35,11 @@ To build a production version, please run the following command
 npm run build
 # or
 yarn build
+
+# After build is finished, run a command
+npm start 
+# or
+yarn start
 ```
 
 Then the production build is generated in the .next/server/pages folder. This folder can be used with any server like apache and nginx.
