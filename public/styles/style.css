@@ -7093,6 +7093,7 @@ ul#main-nav clearall_btn:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 8px;
 }
 
 .shars_countre a:hover,
@@ -7582,7 +7583,7 @@ input[type="radio"].css-checkbox + label.css-label.chk {
     flex-wrap: wrap;
 }
 
-.result_ellipse_blue {
+ul li.result_ellipse_blue {
     margin-top: 4px;
     margin-right: 9px;
     background: #00c58a;
@@ -7599,7 +7600,12 @@ input[type="radio"].css-checkbox + label.css-label.chk {
     box-sizing: border-box;
 }
 
-.result_ellipse_green {
+ul li:last-child.result_ellipse_blue,
+ul li:last-child.result_ellipse_green {
+    margin-right: 0;
+}
+
+ul li.result_ellipse_green {
     margin-top: 4px;
     margin-right: 9px;
     background: #ffba02;
@@ -15361,6 +15367,7 @@ span.bin.oro-bonus-money {
 
 .group-ticket-section .body-section {
     display: flex;
+    justify-content: center;
 }
 
 .group-ticket-section .body-section .body-left {
@@ -15409,6 +15416,22 @@ span.bin.oro-bonus-money {
 .group-option-section {
     padding: 0 20px 20px;
     width: calc(100% - 40px);
+}
+
+@media screen and (max-width: 1080px) {
+    .group-ticket-section .body-section {
+        flex-wrap: wrap;
+    }
+    
+    .group-ticket-section .body-section .body-left img {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+    
+    .group-ticket-section .body-section .body-right p {
+        width: 100%;
+    }
 }
 
 .total_sum .shares-draws {
@@ -16281,6 +16304,7 @@ body:not(.home) #main {
     border: none;
     min-height: 70px;
     flex: 8;
+    margin-right: 16px;
 }
 
 .lotterydetail .how-to-play .text,
@@ -16330,6 +16354,7 @@ body:not(.home) #main {
 
 .beton-header-mobile-section {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -19458,7 +19483,7 @@ body.home #header .has-child .submenu {
     }
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 768px) {
     .beton-header-mobile-section {
         display: flex;
         flex-direction: column;
@@ -19472,9 +19497,6 @@ body.home #header .has-child .submenu {
         box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.16), 0px 0px 6px rgba(0, 0, 0, 0.16), 0px 4px 20px rgba(0, 0, 0, 0.26),
             inset 0px 1px 0px rgba(255, 255, 255, 0.2);
     }
-}
-
-@media screen and (max-width: 768px) {
     #main {
         margin-top: 20px;
     }

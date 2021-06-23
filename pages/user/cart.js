@@ -67,9 +67,12 @@ const CartPage = () => {
 				profile.MemberId,
 				profile.Email,
 				profile.UserSessionId,
-				1, currency,
+				status.draws,
+				status.lines,
+				currency,
 				status.typeId,
-				false, true, 1, 1,
+				false, true, 1,
+				status.productId,
 				status.picks
 			);
 
@@ -90,7 +93,6 @@ const CartPage = () => {
 						const res = JSON.parse(server_message);
 
 						if (res.status === 'payed') {
-							localStorage.clear();
 							router.replace('/thankyou');
 						}
 
