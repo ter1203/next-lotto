@@ -42,8 +42,8 @@ export const logout = () => dispatch => {
   dispatch(loggedOut());
 }
 
-export const signup = (firstName, lastName, email, phone, password, bchID) => async dispatch => {
-  const user = await UserService.signup(firstName, lastName, email, phone, password, bchID);
+export const signup = (firstName, lastName, email, phone, password, affID) => async dispatch => {
+  const user = await UserService.signup(firstName, lastName, email, phone, password, affID);
   const profile = await UserService.getProfile(user.MemberId)
   const balance = await UserService.getBalance(user.MemberId);
   dispatch(setProfile(profile));
@@ -74,7 +74,10 @@ export const resetPassword = (email, oldPwd, newPwd) => async dispatch => {
 
 export const getTransactions = (page, memberID) => async dispatch => {
   const result = await UserService.getTransactions(page, memberID);
-  dispatch(setTransactions(result));
+  dispatch(setTransactions(result.map(item => ({
+    ...item,
+    TransactionType: item.TransactionType === 'Bonus Used' ? 'Bonus' : item.TransactionType
+  }))));
   return result;
 }
 
