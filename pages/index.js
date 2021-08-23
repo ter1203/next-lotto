@@ -114,9 +114,9 @@ export default function Home(props) {
 					{/* <section className="loyalty">
 						<Royalty />
 					</section> */}
-					<section id="middle_about" className="wrap news-section-new" >
+					{/* <section id="middle_about" className="wrap news-section-new" >
 						<News items={news} />
-					</section>
+					</section> */}
 				</section>
 			</main>
 		</Layout>
@@ -226,19 +226,19 @@ export const getStaticProps = async (ctx) => {
 		});
 
 		// const newsData = await parseStringPromise(res[2]);
-		const newsData = await parseStringPromise(await res[2].text());
-		const news = newsData.rss.channel[0].item.slice(0, 3).map(item => {
-			const text = item.description[0].replace(/<img[^>]+>/g, '');
-			const images = item.description[0].match(/<img[^>]+>/g);
-			const src = images[0] ? images[0].match(/src=\"[^"]+\"/g) ?? [] : [];
-			return {
-				title: item.title[0],
-				date: item.pubDate[0],
-				link: item.link[0],
-				image: src[0] ? src[0].substr(5, src[0].length - 6) : '',
-				desc: (text.length > 128) ? text.substr(0, 128) + '...' : text
-			}
-		});
+		// const newsData = await parseStringPromise(await res[2].text());
+		// const news = newsData.rss.channel[0].item.slice(0, 3).map(item => {
+		// 	const text = item.description[0].replace(/<img[^>]+>/g, '');
+		// 	const images = item.description[0].match(/<img[^>]+>/g);
+		// 	const src = images[0] ? images[0].match(/src=\"[^"]+\"/g) ?? [] : [];
+		// 	return {
+		// 		title: item.title[0],
+		// 		date: item.pubDate[0],
+		// 		link: item.link[0],
+		// 		image: src[0] ? src[0].substr(5, src[0].length - 6) : '',
+		// 		desc: (text.length > 128) ? text.substr(0, 128) + '...' : text
+		// 	}
+		// });
 
 		return {
 			props: {
@@ -248,7 +248,7 @@ export const getStaticProps = async (ctx) => {
 				exlottos,
 				raffles,
 				results,
-				news
+				news: []
 			},
 			revalidate: 60
 		}
