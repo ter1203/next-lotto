@@ -82,9 +82,9 @@ export default function Home(props) {
 				<div className="clear" />
 
 				{/* free lotto list */}
-				{/* <section className="sliderwrap lotto-owl-slider">
+				<section className="sliderwrap lotto-owl-slider">
 					<FreeLottoList items={freelottos} />
-				</section> */}
+				</section>
 
 				{/* sure win games */}
 				<section className='sliderwrap lotto-owl-slider'>
@@ -114,9 +114,9 @@ export default function Home(props) {
 					{/* <section className="loyalty">
 						<Royalty />
 					</section> */}
-					<section id="middle_about" className="wrap news-section-new" >
+					{/* <section id="middle_about" className="wrap news-section-new" >
 						<News items={news} />
-					</section>
+					</section> */}
 				</section>
 			</main>
 		</Layout>
